@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-add" viewBox="0 0 24 24">
+    <!-- Placeholder path for add icon -->
+    <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" fill="none"/>
+  </symbol>
+  <symbol id="icon-edit" viewBox="0 0 24 24">
+    <!-- Placeholder path for edit icon -->
+    <path d="M4 21v-4l12-12 4 4-12 12h-4z" fill="currentColor"/>
+  </symbol>
+  <symbol id="icon-delete" viewBox="0 0 24 24">
+    <!-- Placeholder path for delete icon -->
+    <path d="M3 6h18M9 6v12M15 6v12M5 6l1 14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-14" stroke="currentColor" stroke-width="2" fill="none"/>
+  </symbol>
+  <symbol id="icon-complete" viewBox="0 0 24 24">
+    <!-- Placeholder path for complete icon -->
+    <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" fill="none"/>
+  </symbol>
+  <symbol id="icon-drag" viewBox="0 0 24 24">
+    <!-- Placeholder path for drag icon -->
+    <path d="M4 9h16M4 15h16" stroke="currentColor" stroke-width="2" fill="none"/>
+  </symbol>
+</svg>

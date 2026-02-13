@@ -1,0 +1,256 @@
+/*
+  styles.css – Main stylesheet for the Todo app
+  Implements vibrant theme palette, layout, task items, responsiveness, and utilities.
+*/
+
+/* --------------------------------------------------------------------------
+   Theme Variables
+   -------------------------------------------------------------------------- */
+:root {
+  /* Vibrant light theme palette */
+  --color-primary: #ff6f61;   /* coral */
+  --color-secondary: #ffb400; /* amber */
+  --color-accent: #00bfa5;    /* teal */
+  --color-bg: #fdfdfd;        /* near‑white */
+  --color-text: #212121;      /* dark gray */
+  --radius: 0.5rem;
+}
+
+/* Dark mode overrides – apply the .theme-dark class on a parent element (e.g., <body>) */
+.theme-dark {
+  --color-primary: #ff8a80;   /* light coral */
+  --color-secondary: #ffd180; /* light amber */
+  --color-accent: #80deea;    /* light teal */
+  --color-bg: #212121;        /* dark gray */
+  --color-text: #e0e0e0;      /* light gray */
+}
+
+/* --------------------------------------------------------------------------
+   Global Styles
+   -------------------------------------------------------------------------- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Layout – Todo App Container
+   -------------------------------------------------------------------------- */
+.todo-app {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: var(--color-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.app-header {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Input Area
+   -------------------------------------------------------------------------- */
+.task-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.task-input input[type="text"] {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--color-secondary);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  background: transparent;
+  color: var(--color-text);
+}
+
+.task-input button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.task-input button:hover {
+  background-color: var(--color-primary);
+  filter: brightness(1.1);
+}
+
+/* --------------------------------------------------------------------------
+   Task List
+   -------------------------------------------------------------------------- */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.task-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: var(--radius);
+}
+
+.task-item.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Drag handle – could be an icon or simple ::before */
+.task-item .drag-handle {
+  cursor: grab;
+  width: 1rem;
+  height: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary);
+}
+
+/* Text content */
+.task-item .task-text {
+  word-break: break-word;
+}
+
+/* Action buttons (e.g., complete, delete) */
+.task-action {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.task-action:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.task-action:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Footer – Filter Bar & Theme Picker
+   -------------------------------------------------------------------------- */
+.filter-bar,
+.theme-picker {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.filter-bar button,
+.theme-picker button {
+  background: none;
+  border: 2px solid var(--color-secondary);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.filter-bar button.active,
+.theme-picker button.active {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.filter-bar button:focus,
+.theme-picker button:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Utilities
+   -------------------------------------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Icon Styling – SVG sprite usage
+   -------------------------------------------------------------------------- */
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+/* Example of using a background‑image sprite – optional */
+.icon-bg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url('assets/icons.svg#icon-add');
+  fill: currentColor; /* not required for background images but kept for consistency */
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .todo-app {
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .task-input button,
+  .filter-bar button,
+  .theme-picker button {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .task-item {
+    padding: 0.75rem 1rem;
+    grid-template-columns: 1fr auto;
+  }
+
+  .task-item .drag-handle {
+    display: none; /* hide drag handle on small screens */
+  }
+}
